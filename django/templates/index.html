@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home - AlSamad{% endblock title %}
+{% block style %}
+.nav-link active {
+  color: #000000!important;
+}
+{% endblock style %}
+{% block cta %}
+
+
+
+
+
+<div class="container hero">
+        <div class="row justify-content-center">
+            <div style="
+            text-align: center;
+        ">
+                <h1 style="    margin-top: 15%;
+                ">Al Samad Medical Center</h1>
+                <p> At our facility
+                    we combine world class medicine
+                    with compassionate care. </p>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'appointment' %}"  class="btn btn-light btn-lg action-button hb" type="button">Request An Appointment</a>
+                  {% else %}
+                  <a href="login"  class="btn btn-light btn-lg action-button hb" type="button">Request An Appointment</a>
+
+                    {% endif %}
+              </div>
+
+        </div>
+    </div>
+
+{% endblock cta %}
+
+{% block content %}
+<section class="container py-5" id="team">
+    <div class="row text-center mt-3">
+        <div class="col-lg-8 mx-auto">
+            <h1 class="display-4">Our Highly Qualified Doctor</h1>
+            <p class="lead">Learn More About Him:
+            </p>
+        </div>
+    </div>
+
+    
+
+    <div class="container">
+        <div class="text-center">
+
+            <!-- Team item -->
+            <div class="mb-5">
+                <div class="bg-white rounded shadow-sm py-5 px-4 "><a href="about"><img src="{% static 'img/fimg3.jpeg' %}" alt="" class=" mh-100img-fluid rounded-circle mb-3 shadow-sm dns"></a>
+                    <h5 style="
+                    font-size: 35px;
+                ">Dr. Nadeem S. Sheikh</h5>
+                    <span class="small text-uppercase font-weight-bold" style="
+                    font-size: 15px;
+                ">MBBS, DCP, MPhil, FCPP, FCPS</span>
+              
+                      {% comment %} <br>
+                    <span class="small text-uppercase" style="
+                    font-size: 16px;
+                    color:red;
+                ">Post Fellowship Training In Clinical Hematology And Stem Cell Transplantation (NIBD)</span>
+                      <br>
+                    <span class="small text-uppercase" style="
+                    font-size: 16px;
+                    color:red;
+                ">Consultant Lab/Clinical Hematologist And Stem Cell Transplant Physician</span>
+                    <br>
+                    <span class="small text-uppercase" style="
+                    font-size: 16px;
+                    color:red;
+                ">Professor Of Hematology And Transfusion Medicine At Bolan Medical College/Complex Hospital And PGMI Quetta</span>
+                </div> {% endcomment %}
+            </div><!-- End -->
+
+            </div><!-- End -->
+        </div>
+    </div>
+</section><!-- End -->
+
+
+<section id="services" style="
+margin-bottom: 100px;
+position:relative;
+z-index: -1;" href="/">
+  <div class="bg-primary text-center py-5 mb-4">
+      <div class="container">
+        
+        <h1 class="fw-light text-white">Services We Provide</h1>
+        <p class="overview">We provide compassionate and expert care to our community. You are at the center of everything we do. Let us be your healthcare partner.</p>
+      </div>
+    </div>
+  <div class="container">
+    <div class="row">
+      <!-- Team Member 1 -->
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-0 shadow">
+          <img src="{% static 'img/service1.jpg' %}" class="card-img-top" alt="...">
+          <div class="card-body text-center">
+            <h5 class="card-title mb-0">Haematology</h5>
+            <div class="card-text text-black-50">Providing Quality Services.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Team Member 2 -->
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-0 shadow">
+          <img src="{% static 'img/service2.jpg' %}" class="card-img-top" alt="...">
+          <div class="card-body text-center">
+            <h5 class="card-title mb-0">Dermatology</h5>
+            <div class="card-text text-black-50">Your Skin Care Made Easy.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Team Member 3 -->
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-0 shadow">
+          <img src="{% static 'img/service3.jpg' %}" class="card-img-top" alt="...">
+          <div class="card-body text-center">
+            <h5 class="card-title mb-0">Blood Center</h5>
+            <div class="card-text text-black-50">Detailed Blood Transfusions.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Team Member 4 -->
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-0 shadow">
+          <img src="{% static 'img/service4.jpg' %}" class="card-img-top" alt="...">
+          <div class="card-body text-center">
+            <h5 class="card-title mb-0">Diseases</h5>
+            <div class="card-text text-black-50">We Diagnose You.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.row -->
+  
+  </div>
+</section>
+
+
+
+
+
+{% endblock content %}

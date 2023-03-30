@@ -1,0 +1,146 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>{% block title %}{% endblock title %}</title>
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+
+</head>
+
+<style>
+{% block style %}{% endblock style %}
+</style>
+<body>
+    
+    <nav class=".navbar-expand{-sm|-md|-lg|-xl} navbar navbar-expand-lg navigation-clean-search fixed-top" style="
+    background-color:  #0000000d;">
+    <div class="container-fluid">
+        <a class="navbar-brand hover-underline-animation font-weight-bold text-danger" href="{% url 'home' %}">Al Samad</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+            
+        </div>
+        
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-danger">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item hovie" role="presentation">
+                        <a class="nav-link active hover-underline-animation" href="make-an-appointment" style="
+                        color: black;
+                        font-weight: bold;" data-toggle="collapse" data-target=".navbar-collapse">Appointment</a>
+                    </li>
+                    {% else %}
+                        <li class="nav-item hovie" role="presentation">
+                            <a class="nav-link active hover-underline-animation" href="login" style="
+                            color: black;
+                            font-weight: bold;">Appointment</a>
+                        </li>
+                    {% endif %}
+                    <li class="nav-item hovie" role="presentation">
+                        <a class="nav-link active hover-underline-animation" href="online-reporting"style="
+                        color: black;
+                        font-weight: bold;">Reports</a>
+                    </li>
+                    <li class="nav-item hovie" role="presentation">
+                        <a class="nav-link active hover-underline-animation" href="contact" style="
+                        color: black;
+                        font-weight: bold;">Contact</a>
+                    </li> 
+                   
+                
+                {%if user.is_superuser%}
+                  <li class="nav-item hover-underline-animation" role="presentation">
+                    <a href="{% url 'manage' %}" style="float: left;cursor:pointer;" aria-expanded="true" title="You Have {{count}} New Appointments">
+                      <i class="far fa-bell" style="font-size: 20px; float: left; color: black" data-toggle="collapse" data-target=".navbar-collapse">
+                      </i>
+                  </a>
+                  <span class="badge badge-danger">{{count}}</span>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active hover-underline-animation" href="admin" style="
+                    color: black;
+                    font-weight: bold;" data-toggle="collapse" data-target=".navbar-collapse">Admin</a>
+                </li> 
+                {%endif%} 
+                
+
+                {% if user.is_authenticated %}
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active hover-underline-animation" href="handelLogout" style="
+                    color: black;
+                    font-weight: bold;" data-toggle="collapse" data-target=".navbar-collapse">Logout</a>
+                </li> 
+                {% else %}
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active hover-underline-animation" href="login" style="
+                    color: black;
+                    font-weight: bold;" data-toggle="collapse" data-target=".navbar-collapse">Login</a>
+                </li> 
+            {% endif %}
+
+
+                </ul>
+            </div>
+      </nav>
+  <div class="header" style="
+  background: rgb(177, 177, 177) url('../static/img/fimg4.webp') no-repeat fixed center top;
+{% if "appointment" in request.path %}
+  max-height:100px!important;min-height:100px!important;
+{% endif %}
+{% if "contact" in request.path %}
+  max-height:100px!important;min-height:100px!important;
+{% endif %}
+{% if "about" in request.path %}
+  max-height:100px!important;min-height:100px!important;
+{% endif %}
+  
+{% if "online-reporting" in request.path %}
+    <div class="header" style="
+  background: rgb(177, 177, 177) url('../static/img/fimg.jepg') no-repeat fixed center top; opacity: 0.75;
+  {% endif %}
+  ">
+    
+    
+      
+   {% block cta %}{% endblock cta %}
+</div>
+
+
+
+    {% block content %}{% endblock content %}
+
+<hr>
+    <footer class=" text-white-50 mt-3" style="
+text-align: center;
+">
+    <p style="color:black;">©AlSamad by <a href="https://www.linkedin.com/in/h4mmxd/" class="text-success" style="
+        color: green;
+        font-weight: bold;
+        text-decoration:none;">Hammad Qazi</a>
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+  
+    
+
+<script>
+    {% block script %}{% endblock script %}
+      
+
+</script>
+</body>
+
+</html>

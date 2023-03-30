@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Search Results - AlSamad{% endblock title %}
+{% block cta %}
+
+<div class="container hero">
+  <div class="row justify-content-center">
+      <div class="col-12 col-lg-6 col-xl-5 offset-xl-1">
+    <h2 style="margin-top:150px;">Search results : </h2>
+    {% if allPosts|length < 1 %}
+    <p>No search results</p>
+     Your search : <b>{{query}}</b> did not match any documents. <br>
+     Suggestions:
+     <ul>
+     <li>Make sure that your name is spelled correctly.</li>
+     </ul>
+     <div class="container hero">
+      <div class="row justify-content-center">
+          <div class="">
+              
+              <form method="get" action="search_results" class="d-flex">
+                  <input class="form-control me-2" type="search" placeholder="Your Name" aria-label="Search" name="query" id="query">
+                  <button class="btn btn-outline-danger mx-2" type="submit">Enter</button>
+                </form>
+          </div>
+  
+      </div>
+  </div>
+  
+ 
+     {% endif %}
+
+    {% for post in allPosts  %}
+    <div class="card" style="
+    text-align: center;
+">
+        <div class="card-body" style="
+        background-color: #cbfff1d4;
+        color: black;
+        border-radius: inherit;
+    ">
+          <h4 class="card-title" style="
+          font-family: inherit;
+          font-weight: bold;
+      ">Name: {{post.username}}</h4>
+      <hr>
+          <h5 class="card-title" style="
+          font-family: inherit;
+          color:black;
+          font-weight: bold;
+      ">Phone: {{post.phone}}</h5>
+          <img src="{% static 'img/fimg2.jpg' %}" class="card-img-top mb-3" alt="...">
+          <a href="{{post.pdf.url}}" style="
+          color: black;
+          font-weight: bold;
+      " download>Click Here To Download Your Report</a>
+        </div>
+      </div>
+
+        {% endfor %}
+      </div>
+
+    </div>
+</div>
+
+
+{% endblock cta %}
